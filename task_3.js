@@ -2,14 +2,11 @@
 
 
 let sum = 0;
-let count = 0;
+let totalEvenNumber = 100 / 2;
 
 for (let i = 2; i <= 100; i+=2) {
     sum += i;
-    count++;
-    console.log(sum);
-    console.log(count);
 }
 
-const average = sum / count;
+const average = sum / totalEvenNumber;
 console.log(average);
