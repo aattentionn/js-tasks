@@ -1,3 +1,5 @@
+<!-- 9. Генерировать случайные числа и сохранять список этих чисел в LocalStorage. На экране отображать эти числа списком. Не более 10 чисел, старые перетираются.  Не знакома с localstorage (прочитала статью на learnjavascipt). Задача была сложной и без gpt не получилось ее сделать -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +9,31 @@
 </head>
 <body>
     <h1>Случайные числа</h1>
-    <ol id="numberList"></ol>
-    <button id="generateBtn">Сгенерировать число</button>
-    <script src="task_9.js"></script>
+    <ul id="numberList"></ul>
+    <button onclick=randNum()>Сгенерировать число</button>
+    <script>
+
+function loadNumbers() {
+    return JSON.parse(localStorage.getItem('numbers')) || [];
+        }
+
+function storedNums(numbers) {
+    localStorage.setItem('numbers', JSON.stringify(numbers));
+        }
+
+function randNum() {
+    let numbers = loadNumbers();
+    let newNum = Math.floor(Math.random() * 10);
+    numbers = [...numbers, newNum].slice(-10);
+    storedNums(numbers);
+    displayNums();
+        }
+
+function displayNums() {
+    let numbers = loadNumbers();
+    document.getElementById('numberList').innerHTML = loadNumbers().map(num => `<li>${num}</li>`).join('');
+        }
+
+    </script>
 </body>
 </html>
