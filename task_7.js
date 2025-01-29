@@ -2,7 +2,15 @@
 
 function isPalindrome(string) {
 
-    return string.toLowerCase().split('').reverse().join('') == string;
+    let startString = 0;
+    let endString = string.length - 1;
+
+    while (startString < endString) {
+        if (string[startString] !== string[endString]) return false;
+        startString++;
+        endString--;
+    };
+    return true;
 }
 
 console.log(isPalindrome("34543"));
